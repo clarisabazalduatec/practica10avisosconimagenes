@@ -69,6 +69,9 @@ dependencies {
     implementation(libs.androidx.work.runtime)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+    implementation(libs.androidx.exifinterface)
 
     // Hilt (Práctica 9): la librería, el generador de código, y sus piezas para ViewModel y WorkManager
     implementation(libs.hilt.android)

@@ -25,6 +25,6 @@ class AvisosRepository @Inject constructor(private val api: AvisosApi, private v
     /** Cada aviso nuevo, conforme llega. Se cierra cuando quien lo recolecta se va. */
     fun observar(desde: Int): Flow<Aviso> = stream.observar(desde).map { it.toDomain() }
 
-    suspend fun publicar(titulo: String, cuerpo: String): Aviso =
-        api.crearAviso(NuevoAvisoBody(titulo.trim(), cuerpo.trim())).toDomain()
+    suspend fun publicar(titulo: String, cuerpo: String, imagen: String? = null): Aviso =
+        api.crearAviso(NuevoAvisoBody(titulo.trim(), cuerpo.trim(), imagen)).toDomain()
 }
