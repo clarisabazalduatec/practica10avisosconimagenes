@@ -13,7 +13,7 @@ import retrofit2.converter.kotlinx.serialization.asConverterFactory
 object Network {
 
     /** Sale de `local.properties` (`avisos.api`). Ver app/build.gradle.kts. */
-    const val BASE_URL = BuildConfig.API_URL
+    const val BASE_URL = "https://statistics-requires-chance-venues.trycloudflare.com/api/"
 
     private val json = Json {
         ignoreUnknownKeys = true

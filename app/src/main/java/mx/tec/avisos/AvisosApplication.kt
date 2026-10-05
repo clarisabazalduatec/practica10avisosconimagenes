@@ -3,6 +3,9 @@ package mx.tec.avisos
 import android.app.Application
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
+import coil3.ImageLoader
+import coil3.PlatformContext
+import coil3.SingletonImageLoader
 import dagger.hilt.android.HiltAndroidApp
 import mx.tec.avisos.notificaciones.Notificador
 import mx.tec.avisos.trabajo.RevisarAvisosWorker
@@ -19,14 +22,18 @@ import javax.inject.Inject
  * apaga el arranque automático de WorkManager.
  */
 @HiltAndroidApp
-class AvisosApplication : Application(), Configuration.Provider {
+class AvisosApplication : Application(), Configuration.Provider, SingletonImageLoader.Factory {
 
     @Inject lateinit var workerFactory: HiltWorkerFactory
+
+    @Inject lateinit var imageLoader: ImageLoader
 
     @Inject lateinit var notificador: Notificador
 
     override val workManagerConfiguration: Configuration
         get() = Configuration.Builder().setWorkerFactory(workerFactory).build()
+
+    override fun newImageLoader(context: PlatformContext): ImageLoader = imageLoader
 
     override fun onCreate() {
         super.onCreate()
